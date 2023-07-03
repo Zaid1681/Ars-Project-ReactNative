@@ -3,18 +3,15 @@ import { View, Button, StyleSheet, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as Animatable from 'react-native-animatable';
-import AdditionScreen from './AdditionScreen';
+import Boiler from './Boiler';
+import Pump from './Pump';
+import Chiler from './Chiler';
+import Airhandling from './Airhandling';
+import CoolingTower from './CoolingTower';
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const handleButtonPress = (systemName, navigation) => {
-    if (systemName === 'Induction Motor') {
-      navigation.navigate('Addition');
-    } else {
-      Alert.alert(`Selected ${systemName}`);
-    }
-  };
 
   return (
     <NavigationContainer>
@@ -25,9 +22,29 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Addition"
-          component={AdditionScreen}
-          options={{ title: 'Addition' }}
+          name="Boiler"
+          component={Boiler}
+          options={{ title: 'Boiler' }}
+        />
+        <Stack.Screen
+          name="Pump"
+          component={Pump}
+          options={{ title: 'Pump' }}
+        />
+        <Stack.Screen
+          name="Chiler"
+          component={Chiler}
+          options={{ title: 'Chiler' }}
+        />
+        <Stack.Screen
+          name="Airhandling"
+          component={Airhandling}
+          options={{ title: 'Airhandling' }}
+        />
+        <Stack.Screen
+          name="CoolingTower"
+          component={CoolingTower}
+          options={{ title: 'CoolingTower' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -36,8 +53,16 @@ const App = () => {
 
 const HomeScreen = ({ navigation }) => {
   const handleButtonPress = (systemName) => {
-    if (systemName === 'Induction Motor') {
-      navigation.navigate('Addition');
+    if (systemName === 'Boiler') {
+      navigation.navigate('Boiler');
+    } else if (systemName === 'Pump') {
+      navigation.navigate('Pump');
+    } else if (systemName === 'Chiler') {
+      navigation.navigate('Chiler');
+    } else if (systemName === 'Airhandling') {
+      navigation.navigate('Airhandling');
+    } else if (systemName === 'CoolingTower') {
+      navigation.navigate('CoolingTower');
     } else {
       Alert.alert(`Selected ${systemName}`);
     }
@@ -47,68 +72,39 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={200}>
         <Button
-          title="Induction Motor"
-          onPress={() => handleButtonPress('Induction Motor')}
-          color="#808080"
-        />
-      </Animatable.View>
-      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
-        <Button
-          title="Lighting System"
-          onPress={() => handleButtonPress('Lighting System')}
+          title="Boiler"
+          onPress={() => handleButtonPress('Boiler')}
           color="#808080"
         />
       </Animatable.View>
       <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
         <Button
           title="Pump"
-          onPress={() => handleButtonPress('Lighting System')}
+          onPress={() => handleButtonPress('Pump')}
+          color="#808080"
+        />
+      </Animatable.View>
+      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
+        <Button
+          title="Chiler"
+          onPress={() => handleButtonPress('Chiler')}
           color="#808080"
         />
       </Animatable.View>
       <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
         <Button
           title="Cooling Tower"
-          onPress={() => handleButtonPress('Lighting System')}
+          onPress={() => handleButtonPress('CoolingTower')}
           color="#808080"
         />
       </Animatable.View>
       <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
         <Button
-          title="Compression Chiller"
-          onPress={() => handleButtonPress('Lighting System')}
+          title="Air handling"
+          onPress={() => handleButtonPress('Airhandling')}
           color="#808080"
         />
       </Animatable.View>
-      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
-        <Button
-          title="Blower"
-          onPress={() => handleButtonPress('Lighting System')}
-          color="#808080"
-        />
-      </Animatable.View>
-      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
-        <Button
-          title="Air Compressor"
-          onPress={() => handleButtonPress('Lighting System')}
-          color="#808080"
-        />
-      </Animatable.View>
-      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
-        <Button
-          title="Buildings"
-          onPress={() => handleButtonPress('Lighting System')}
-          color="#808080"
-        />
-      </Animatable.View>
-      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
-        <Button
-          title="Electrical System"
-          onPress={() => handleButtonPress('Lighting System')}
-          color="#808080"
-        />
-      </Animatable.View>
-      
     </View>
   );
 };
@@ -135,4 +131,3 @@ const styles = StyleSheet.create({
 
 
 export default App;
-
