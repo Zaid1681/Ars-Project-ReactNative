@@ -25,6 +25,7 @@ const PowerCosumption = () => {
       <View style={{ paddingHorizontal: 80 }}>
         <Button
           onPress={handleButtonPress}
+          w
           title="STACKS"
           color="#438B41"
           accessibilityLabel="Learn more about this purple button"

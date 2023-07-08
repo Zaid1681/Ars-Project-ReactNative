@@ -6,6 +6,7 @@ import {
   Pressable,
   ImageBackground,
   StyleSheet,
+  Image,
 } from "react-native";
 import { Transition, Transitioning } from "react-native-reanimated";
 import ServiceData from "../constants/ServiceData";
@@ -29,7 +30,7 @@ const Service = () => {
   const getCardStyles = (index) => {
     return [
       styles.card,
-      hoveredCardIndex === index && styles.hoveredCard,
+      // hoveredCardIndex === index && styles.hoveredCard,
       hoveredCardIndex === index && { transform: [{ scale: 1.1 }] },
     ];
   };
@@ -42,13 +43,14 @@ const Service = () => {
     <View style={{ marginBottom: 10 }}>
       <Text
         style={{
-          fontSize: 25,
-          display: "flex",
-          textAlign: "center",
           paddingVertical: 40,
+          fontSize: 25,
+          paddingHorizontal: 10,
+          paddingVertical: 20,
+          fontFamily: "Poppins-Medium",
         }}
       >
-        Services we offer
+        Services We Offer
       </Text>
       <Transitioning.View ref={ref} transition={transition}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -59,32 +61,67 @@ const Service = () => {
               onPress={() => handleCardPress(index)}
             >
               <View style={getCardStyles(index)}>
-                <ImageBackground
-                  imageStyle={{ borderRadius: 6, resizeMode: "cover" }}
-                  style={{ aspectRatio: 5 / 6, height: 200 }}
-                  source={{ uri: item.image }}
+                <View
+                  style={[
+                    {
+                      aspectRatio: 5 / 6,
+                      height: 210,
+                      backgroundColor: "#ffff",
+                      borderWidth: 1,
+                      borderRadius: 10,
+                      borderRadius: 10,
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 2,
+                        height: 5,
+                      },
+                      shadowOpacity: 0.9,
+                      shadowRadius: 5,
+                      elevation: 10,
+                    },
+                    hoveredCardIndex === index && {
+                      backgroundColor: "#438A43",
+                      color: "#ffff",
+                    }, // Change the background color on hover
+                  ]}
                 >
-                  <View style={{ display: "flex", padding: 10 }}>
+                  <View
+                    style={{
+                      display: "flex",
+                      padding: 10,
+                    }}
+                  >
+                    <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                      {item.id}
+                    </Text>
                     <Text
                       style={{
                         fontSize: 20,
                         fontWeight: 600,
-                        color: "white",
-                        padding: 8,
-                        textAlign: "center",
+                        color: "black",
+                        padding: 5,
+                        textAlign: "left",
                       }}
                     >
                       {item.title}
                     </Text>
                     <View style={getTextStyles(index)}>
-                      <Text style={{ color: "white", fontSize: 15 }}>
+                      <Text
+                        style={{
+                          color: "white",
+                          fontSize: 13,
+                          fontWeight: "bold",
+                          color: "black",
+                          padding: 5,
+                        }}
+                      >
                         {hoveredCardIndex === index
-                          ? "Hovered Card"
+                          ? item.Details
                           : item.subTitle}
                       </Text>
                     </View>
                   </View>
-                </ImageBackground>
+                </View>
               </View>
             </Pressable>
           ))}
@@ -97,7 +134,7 @@ const Service = () => {
 const styles = StyleSheet.create({
   card: {
     width: 200,
-    height: 200,
+    height: 240,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
