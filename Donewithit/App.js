@@ -8,6 +8,11 @@ import Pump from './Pump';
 import Chiler from './Chiler';
 import Airhandling from './Airhandling';
 import CoolingTower from './CoolingTower';
+import Thermal from './Thermal'
+import Coal from './Coal';
+import Eco from './Eco';
+import Turbine from './Turbine';
+import Condenser from './Condenser';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +51,31 @@ const App = () => {
           component={CoolingTower}
           options={{ title: 'CoolingTower' }}
         />
+        <Stack.Screen
+          name="Thermal"
+          component={Thermal}
+          options={{ title: 'Thermal' }}
+        />
+        <Stack.Screen
+          name="Coal"
+          component={Coal}
+          options={{ title: 'Coal' }}
+        />
+        <Stack.Screen
+          name="Economiser and Air Pre-heater"
+          component={Eco}
+          options={{ title: 'Economiser and Air Pre-heater' }}
+        />
+        <Stack.Screen
+          name="Turbine"
+          component={Turbine}
+          options={{ title: 'Turbine' }}
+        />
+        <Stack.Screen
+          name="Condenser"
+          component={Condenser}
+          options={{ title: 'Condenser' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -63,7 +93,22 @@ const HomeScreen = ({ navigation }) => {
       navigation.navigate('Airhandling');
     } else if (systemName === 'CoolingTower') {
       navigation.navigate('CoolingTower');
-    } else {
+    }
+    else if (systemName === 'Thermal') {
+      navigation.navigate('Thermal');
+    }
+    else if (systemName === 'Coal') {
+      navigation.navigate('Coal');
+    }
+    else if (systemName === 'Economiser and Air Pre-heater') {
+      navigation.navigate('Economiser and Air Pre-heater');
+    } 
+    else if (systemName === 'Turbine') {
+      navigation.navigate('Turbine');
+    }
+    else if (systemName === 'Condenser') {
+      navigation.navigate('Condenser');
+    }else {
       Alert.alert(`Selected ${systemName}`);
     }
   };
@@ -102,6 +147,41 @@ const HomeScreen = ({ navigation }) => {
         <Button
           title="Air handling"
           onPress={() => handleButtonPress('Airhandling')}
+          color="#808080"
+        />
+      </Animatable.View>
+      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
+        <Button
+          title="Thermal"
+          onPress={() => handleButtonPress('Thermal')}
+          color="#808080"
+        />
+      </Animatable.View>
+      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
+        <Button
+          title="Coal"
+          onPress={() => handleButtonPress('Coal')}
+          color="#808080"
+        />
+      </Animatable.View>
+      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
+        <Button
+          title="Economiser and Air Pre-heater"
+          onPress={() => handleButtonPress('Economiser and Air Pre-heater')}
+          color="#808080"
+        />
+      </Animatable.View>
+      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
+        <Button
+          title="Turbine"
+          onPress={() => handleButtonPress('Turbine')}
+          color="#808080"
+        />
+      </Animatable.View>
+      <Animatable.View style={styles.buttonContainer} animation="fadeInUp" duration={1000} delay={400}>
+        <Button
+          title="Conderser"
+          onPress={() => handleButtonPress('Conderser')}
           color="#808080"
         />
       </Animatable.View>
