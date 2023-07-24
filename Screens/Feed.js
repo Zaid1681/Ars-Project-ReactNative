@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,8 +15,13 @@ import * as Animatable from "react-native-animatable";
 import Boiler from "../stackFiles/Boiler";
 import Pump from "../stackFiles/Pump";
 import Chiler from "../stackFiles/Chiller";
+import Thermal from "../stackFiles/Thermal";
+import Coal from "../stackFiles/Coal";
+import Condenser from "../stackFiles/Condenser";
+import Eco from "../stackFiles/Eco";
+import Turbine from "../stackFiles/Turbine";
 import arsLogo from "../assets/arsImg.jpg";
-import ham from "../assets/icons/ham.png";
+import ham2 from "../assets/icons/ham2.png";
 import { DrawerActions } from "@react-navigation/native";
 
 import Airhandling from "../stackFiles/AirHandling";
@@ -53,6 +59,27 @@ const Feed = () => {
         component={CoolingTower}
         options={{ title: "CoolingTower" }}
       />
+      <Stack.Screen
+        name="Thermal"
+        component={Thermal}
+        options={{ title: "Thermal" }}
+      />
+      <Stack.Screen name="Coal" component={Coal} options={{ title: "Coal" }} />
+      <Stack.Screen
+        name="Eco"
+        component={Eco}
+        options={{ title: "Econimiser" }}
+      />
+      <Stack.Screen
+        name="Turbine"
+        component={Turbine}
+        options={{ title: "Turbine" }}
+      />
+      <Stack.Screen
+        name="Condenser"
+        component={Condenser}
+        options={{ title: "Turbine" }}
+      />
     </Stack.Navigator>
     // </NavigationContainer>
   );
@@ -68,165 +95,255 @@ const HomeScreen = ({ navigation }) => {
       navigation.navigate("Chiler");
     } else if (systemName === "Airhandling") {
       navigation.navigate("Airhandling");
+    } else if (systemName === "Thermal") {
+      navigation.navigate("Thermal");
     } else if (systemName === "CoolingTower") {
       navigation.navigate("CoolingTower");
+    } else if (systemName === "Coal") {
+      navigation.navigate("Coal");
+    } else if (systemName === "Economiser and Air Pre-heater") {
+      navigation.navigate("Eco");
+    } else if (systemName === "Turbine") {
+      navigation.navigate("Turbine");
+    } else if (systemName === "Condenser") {
+      navigation.navigate("Condenser");
     } else {
       Alert.alert(`Selected ${systemName}`);
     }
   };
 
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          // flex: 1,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingHorizontal: 15,
-        }}
-      >
-        <Image
-          source={arsLogo}
+    <ScrollView>
+      <View style={styles.container}>
+        <View
           style={{
-            width: 87,
-            height: 45,
-            objectFit: "contain",
-            // alignSelf: "flex-start",
-            // padding: 20,
-            // marginVertical: 10,
-
-            borderRadius: 30,
+            // flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: 15,
+            paddingVertical: 10,
+            backgroundColor: "#ffff",
           }}
-        />
-        <TouchableOpacity
-          style={{ zIndex: 10 }}
-          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
         >
           <Image
-            source={ham}
+            source={arsLogo}
             style={{
-              width: 18,
-              height: 18,
-              objectFit: "cover",
-              alignSelf: "flex-end",
-              // marginVertical: 20,
-              marginHorizontal: 15,
-              // : 20,
-              // borderRadius: 10,
+              width: 87,
+              height: 45,
+              objectFit: "contain",
+              // alignSelf: "flex-start",
+              // padding: 20,
+              // marginVertical: 10,
+
+              borderRadius: 30,
             }}
           />
-        </TouchableOpacity>
-      </View>
-      <View>
-        <Text style={styles.aboutTitle}>Stacks</Text>
-      </View>
-      <Animatable.View
-        style={styles.subContainer}
-        animation="fadeInUp"
-        duration={500}
-        delay={400}
-      >
-        <TouchableOpacity
-          // style={styles.button}
-          onPress={() => navigation.navigate("Boiler")}
-          style={styles.buttonContainer}
-        >
-          <Image
-            source={require("../assets/icons/boiler.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.buttonText}>Boiler</Text>
-        </TouchableOpacity>
-        <View style={styles.gapp} />
-
-        <TouchableOpacity
-          // style={styles.button}
-          onPress={() => navigation.navigate("Chiler")}
-          style={styles.buttonContainer}
-        >
-          <Image
-            source={require("../assets/icons/chiller.jpg")}
-            style={styles.icon}
-          />
-          <View>
-            <Text style={styles.buttonText}>Chiller</Text>
-          </View>
-        </TouchableOpacity>
-      </Animatable.View>
-      <View style={{ height: 10 }} />
-      <Animatable.View
-        style={styles.subContainer}
-        animation="fadeInUp"
-        duration={500}
-        delay={400}
-      >
-        <TouchableOpacity
-          // style={styles.button}
-          onPress={() => navigation.navigate("Pump")}
-          style={styles.buttonContainer}
-        >
-          <Image
-            source={require("../assets/icons/pump.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.buttonText}>Pump</Text>
-          {/* <Text style={styles.buttonText}>Boiler</Text> */}
-        </TouchableOpacity>
-        <View style={styles.gapp} />
-
-        <TouchableOpacity
-          // style={styles.button}
-          onPress={() => navigation.navigate("CoolingTower")}
-          style={styles.buttonContainer}
-        >
-          <View>
+          <TouchableOpacity
+            style={{ zIndex: 10 }}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          >
             <Image
-              source={require("../assets/icons/coolingTower.png")}
+              source={ham2}
+              style={{
+                width: 30,
+                height: 30,
+                objectFit: "cover",
+                alignSelf: "flex-end",
+                // marginVertical: 20,
+                marginTop: 10,
+                marginHorizontal: 15,
+                // : 20,
+                // borderRadius: 10,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View>
+          <Text style={styles.aboutTitle}>Stacks</Text>
+        </View>
+        <Animatable.View
+          style={styles.subContainer}
+          animation="fadeInUp"
+          duration={500}
+          delay={400}
+        >
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Boiler")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/boiler.png")}
               style={styles.icon}
             />
-            <Text style={styles.buttonText}>CoolingTower</Text>
-          </View>
-        </TouchableOpacity>
-      </Animatable.View>
-      <View style={{ height: 10 }} />
-      <Animatable.View
-        style={[styles.subContainer]}
-        animation="fadeInUp"
-        duration={500}
-        delay={400}
-      >
-        {/* <View style={styles.shadow}> */}
-        <TouchableOpacity
-          // style={styles.button}
-          onPress={() => navigation.navigate("Airhandling")}
-          style={styles.buttonContainer}
+            <Text style={styles.buttonText}>Boiler</Text>
+          </TouchableOpacity>
+          <View style={styles.gapp} />
+
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Chiler")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/chiller.jpg")}
+              style={styles.icon}
+            />
+            <View>
+              <Text style={styles.buttonText}>Chiller</Text>
+            </View>
+          </TouchableOpacity>
+        </Animatable.View>
+        <View style={{ height: 10 }} />
+        <Animatable.View
+          style={styles.subContainer}
+          animation="fadeInUp"
+          duration={500}
+          delay={400}
         >
-          <Image
-            source={require("../assets/icons/airhandling.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.buttonText}>Airhandling</Text>
-          {/* <Text style={styles.buttonText}>Boiler</Text> */}
-        </TouchableOpacity>
-        {/* </View> */}
-        <View style={styles.gapp} />
-        <TouchableOpacity
-          // style={styles.button}
-          onPress={() => navigation.navigate("Pump")}
-          style={styles.buttonContainer}
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Pump")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/pump.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Pump</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+          <View style={styles.gapp} />
+
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("CoolingTower")}
+            style={styles.buttonContainer}
+          >
+            <View>
+              <Image
+                source={require("../assets/icons/coolingTower.png")}
+                style={styles.icon}
+              />
+              <Text style={styles.buttonText}>CoolingTower</Text>
+            </View>
+          </TouchableOpacity>
+        </Animatable.View>
+        <View style={{ height: 10 }} />
+        <Animatable.View
+          style={[styles.subContainer]}
+          animation="fadeInUp"
+          duration={500}
+          delay={400}
         >
-          <Text style={styles.buttonText}>Airhandling</Text>
-          {/* <Text style={styles.buttonText}>Boiler</Text> */}
-        </TouchableOpacity>
-      </Animatable.View>
-    </View>
+          {/* <View style={styles.shadow}> */}
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Airhandling")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/airhandling.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Airhandling</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+          {/* </View> */}
+          <View style={styles.gapp} />
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Thermal")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/thermal.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Thermal</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+        </Animatable.View>
+        <View style={{ height: 10 }} />
+        <Animatable.View
+          style={[styles.subContainer]}
+          animation="fadeInUp"
+          duration={500}
+          delay={400}
+        >
+          {/* <View style={styles.shadow}> */}
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Coal")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/Coal.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Coal</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+          {/* </View> */}
+          <View style={styles.gapp} />
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Turbine")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/turbine.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Turbine</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+        </Animatable.View>
+        <View style={{ height: 10 }} />
+        <Animatable.View
+          style={[styles.subContainer]}
+          animation="fadeInUp"
+          duration={500}
+          delay={400}
+        >
+          {/* <View style={styles.shadow}> */}
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Eco")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/eco.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Economiser and Air Pre-Heater</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+          {/* </View> */}
+          <View style={styles.gapp} />
+          <TouchableOpacity
+            // style={styles.button}
+            onPress={() => navigation.navigate("Condenser")}
+            style={styles.buttonContainer}
+          >
+            <Image
+              source={require("../assets/icons/condenser.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.buttonText}>Condenser</Text>
+            {/* <Text style={styles.buttonText}>Boiler</Text> */}
+          </TouchableOpacity>
+        </Animatable.View>
+        <View style={{ height: 10 }} />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 30,
+    // paddingVertical: 30,
 
     // justifyContent: "center",
     // alignItems: "center",

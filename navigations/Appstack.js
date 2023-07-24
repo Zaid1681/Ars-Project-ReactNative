@@ -4,6 +4,8 @@
 import Payment from "../Screens/Payment";
 import Stacks from "../Screens/Feed";
 import Home from "../Screens/Home";
+import Icon from "react-native-vector-icons/Ionicons";
+
 // import { View, Button } from "react-native";
 
 // const Appstack = () => {
@@ -33,7 +35,8 @@ import Home from "../Screens/Home";
 import * as React from "react";
 import { Button, View, TouchableOpacity, Text } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
+import { DrawerActions, NavigationContainer } from "@react-navigation/native";
+import CustomDrawer from "../components/CustomDrawer";
 
 function HomeScreen({ navigation }) {
   return (
@@ -59,7 +62,18 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     // <NavigationContainer>
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawer {...props} />}
+      screenOptions={{
+        drawerActiveBackgroundColor: "green",
+        drawerActiveTintColor: "#ffff",
+        drawerLabelStyle: {
+          fontFamily: "Inter-Variable",
+          fontSize: 15,
+          fontWeight: "bold",
+        },
+      }}
+    >
       {/* <TouchableOpacity
         style={{ zindex: 10 }}
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
@@ -71,17 +85,51 @@ export default function App() {
       <Drawer.Screen
         name="A.R.S"
         component={Home}
-        options={{ headerShown: false }}
+        // options={{ }}
+        options={{
+          headerShown: false,
+          title: "Home",
+          drawerIcon: ({ focused, size, color }) => (
+            <Icon
+              name="md-home"
+              size={size}
+              color={color}
+              // color={focused ? "#7cc" : "#ccc"}
+            />
+          ),
+        }}
       />
       <Drawer.Screen
         name="Payment"
         component={Payment}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          title: "Payment",
+          drawerIcon: ({ focused, size, color }) => (
+            <Icon
+              name="wallet"
+              size={size}
+              color={color}
+              // color={focused ? "#7cc" : "#ccc"}
+            />
+          ),
+        }}
       />
       <Drawer.Screen
         name="Stacks"
         component={Stacks}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          title: "Stacks",
+          drawerIcon: ({ focused, size, color }) => (
+            <Icon
+              name="calculator"
+              size={size}
+              color={color}
+              // color={focused ? "#7cc" : "#ccc"}
+            />
+          ),
+        }}
       />
     </Drawer.Navigator>
   );

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Button,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 import Focusedstatusbar from "../components/FocusedStatus";
@@ -95,7 +96,12 @@ const Home = ({ navigation }) => {
             backgroundColor: COLORS.primary,
           }}
         >
-          <View style={{ height: 310, backgroundColor: COLORS.primary }}></View>
+          {/* <View style={{ height: 310, backgroundColor: COLORS.primary }}></View> */}
+          <ImageBackground
+            source={require("../assets/1.jpg")}
+            //   style={{ padding: 2, height: 150, opacity: 0.5 }}
+            style={{ height: 310, opacity: 0.7 }}
+          ></ImageBackground>
           <View
             style={{
               flex: 900,
@@ -151,38 +157,54 @@ const Home = ({ navigation }) => {
           <View style={{ paddingTop: 20, paddingVertical: 10 }}>
             <Text
               style={{
-                color: "white",
-                fontSize: 45,
-                paddingVertical: 2,
+                color: "#f5f5f5",
+                fontSize: 28,
+                // paddingVertical: 2,
                 // fontWeight: 1000,
                 fontFamily: "Montserrat-SemiBold",
+                textAlign: "center",
               }}
             >
-              Welcome
+              Welcome To
             </Text>
             <Text
               style={{
                 color: "white",
-                fontSize: 40,
-                paddingVertical: 10,
+                fontSize: 50,
+                paddingTop: 10,
+                textAlign: "center",
                 // paddingLeft: ,
                 // fontWeight: 1000,
-                fontFamily: "Montserrat-SemiBold",
+                fontFamily: "Poppins-Bold",
               }}
             >
-              To
+              A.R.S
             </Text>
+            {/* <Text
+              style={{
+                color: "white",
+                fontSize: 15,
+                top: -10,
+                textAlign: "center",
+                // paddingLeft: ,
+                // fontWeight: 1000,
+                fontFamily: "Poppins-Bold",
+              }}
+            >
+              (ARS Full form)
+            </Text> */}
             <Text
               style={{
                 color: "white",
                 // paddingLeft: 10,
-                paddingTop: 10,
+                textAlign: "center",
+                paddingBottom: 10,
                 fontSize: 30,
-                color: "green",
+                // color: "green",
                 fontFamily: "Poppins-Bold",
               }}
             >
-              A.R.S Energy Auditors
+              Energy Auditors
             </Text>
           </View>
           {/* Landing Page View */}
@@ -238,9 +260,9 @@ const Home = ({ navigation }) => {
           <View>
             <History />
           </View>
-          {/* <View>
+          <View>
             <Team />
-          </View> */}
+          </View>
           <View>
             <PowerCosumption />
           </View>

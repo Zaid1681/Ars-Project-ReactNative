@@ -121,27 +121,34 @@ const Chiler = () => {
         <Text style={styles.buttonText}>Calculate</Text>
       </TouchableOpacity>
 
-      <View style={styles.table}>
-        <View style={styles.tableCell}>
-          <Text style={styles.tableHeader}>Refrigeration Effect (Qe)</Text>
-          <Text style={styles.tableValue}>{Qe}</Text>
-        </View>
-        <View style={styles.tableCell}>
-          <Text style={styles.tableHeader}>Refrigeration Capacity (TR)</Text>
-          <Text style={styles.tableValue}>{TR}</Text>
-        </View>
+      <View style={{ padding: 10 }}>
+        <Text style={styles.resultText}>Result</Text>
       </View>
-
-      <View style={styles.table}>
-        <View style={styles.tableCell}>
-          <Text style={styles.tableHeader}>
-            Estimated Compressor Shaft Power (Qin)
-          </Text>
-          <Text style={styles.tableValue}>{Qin}</Text>
+      <View style={styles.resultContainer}>
+        <View style={styles.table}>
+          <View style={styles.tableCell}>
+            <Text style={styles.tableHeader}>Refrigeration Effect (Qe)</Text>
+            <Text style={styles.tableValue}>{Qe}</Text>
+          </View>
+          <View style={styles.tableCell}>
+            <Text style={styles.tableHeader}>Refrigeration Capacity (TR)</Text>
+            <Text style={styles.tableValue}>{TR}</Text>
+          </View>
         </View>
-        <View style={styles.tableCell}>
-          <Text style={styles.tableHeader}>Energy Efficiency Ratio (EER)</Text>
-          <Text style={styles.tableValue}>{EER}</Text>
+
+        <View style={styles.table}>
+          <View style={styles.tableCell}>
+            <Text style={styles.tableHeader}>
+              Estimated Compressor Shaft Power (Qin)
+            </Text>
+            <Text style={styles.tableValue}>{Qin}</Text>
+          </View>
+          <View style={styles.tableCell}>
+            <Text style={styles.tableHeader}>
+              Energy Efficiency Ratio (EER)
+            </Text>
+            <Text style={styles.tableValue}>{EER}</Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -164,19 +171,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 5,
     padding: 10,
-    marginBottom: 20,
+    paddingHorizontal: 20,
+    // marginBottom: 20,
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     marginBottom: 8,
     fontWeight: "bold",
   },
   input: {
-    height: 40,
+    height: 35,
     borderWidth: 1,
     borderColor: "#ccc",
-    marginBottom: 10,
+    // marginBottom: 10,
     paddingHorizontal: 10,
+    marginHorizontal: 2,
   },
   button: {
     backgroundColor: "#2196F3",
@@ -211,6 +220,17 @@ const styles = StyleSheet.create({
   tableValue: {
     fontSize: 16,
     textAlign: "center",
+  },
+  resultContainer: {
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: "#ffff",
+  },
+  resultText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    fontFamily: "Inter-Variable",
   },
 });
 

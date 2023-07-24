@@ -4,7 +4,7 @@ import React from "react";
 const Article = () => {
   return (
     <View style={{ borderColor: "green" }}>
-      <Text>Stacks</Text>
+      <Text>Payment</Text>
     </View>
   );
 };
